@@ -66,41 +66,14 @@
   opacity: .82;
 }
 
-.cover .cover-date-badge {
-  display: flex;
-  align-items: stretch;
-  width: max-content;
-  max-width: 100%;
+.cover .cover-date-plain {
   margin: 28px auto 0;
-  overflow: hidden;
-  border: 1px solid rgba(229, 255, 255, .95);
-}
-
-.cover .cover-date-value,
-.cover .cover-date-city {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-}
-
-.cover .cover-date-value {
-  padding: 1px 7px;
-  background: #efffff;
-  color: #11a9c6;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 14px;
+  font-size: 11px;
   line-height: 1.2;
   letter-spacing: .5px;
-}
-
-.cover .cover-date-city {
-  padding: 1px 6px;
-  border-left: 1px solid rgba(229, 255, 255, .9);
-  background: rgba(2, 128, 193, .42);
-  color: #f7ffff;
-  font-family: "Zihun Main KV", "Microsoft YaHei", sans-serif;
-  font-size: 12px;
-  line-height: 1.2;
+  color: #efffff;
+  font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+  text-align: center;
 }
 
 .cover .cover-event {
