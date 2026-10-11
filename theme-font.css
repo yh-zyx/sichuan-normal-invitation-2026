@@ -4,6 +4,18 @@
   font-display: swap;
 }
 
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 @font-face {
   font-family: "DIN Main KV";
   src: url("assets/fonts/din-light-main-kv.ttf") format("truetype");
@@ -24,6 +36,47 @@
 .page .section-index {
   font-family: "DIN Main KV", "DIN Next LT Pro", Arial, sans-serif;
   font-weight: 300;
+}
+
+.kv-title-lockup {
+  display: block;
+  width: min(100%, 390px);
+  height: auto;
+  margin: 26px auto 10px;
+  filter: drop-shadow(0 8px 18px rgba(0, 26, 112, 0.2));
+  transform-origin: 50% 55%;
+}
+
+.page.is-active .kv-title-lockup {
+  animation: kvTitleArrival 1.15s cubic-bezier(.2,.82,.2,1) both,
+    kvTitleGlow 3.6s ease-in-out 1.15s infinite;
+}
+
+@keyframes kvTitleArrival {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(.9);
+    filter: blur(8px) drop-shadow(0 0 0 rgba(80, 223, 255, 0));
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.018);
+    filter: blur(0) drop-shadow(0 0 24px rgba(80, 223, 255, .55));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0) drop-shadow(0 8px 18px rgba(0, 26, 112, .2));
+  }
+}
+
+@keyframes kvTitleGlow {
+  0%, 100% {
+    filter: drop-shadow(0 8px 18px rgba(0, 26, 112, .2));
+  }
+  50% {
+    filter: drop-shadow(0 0 22px rgba(79, 229, 255, .42));
+  }
 }
 
 .cover .year.invitation-title {
@@ -223,5 +276,10 @@
     margin-top: 16px;
     font-size: 52px;
     letter-spacing: 10px;
+  }
+
+  .kv-title-lockup {
+    margin-top: 18px;
+    margin-bottom: 7px;
   }
 }
