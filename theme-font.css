@@ -57,6 +57,19 @@
   margin: 12px 0 10px;
 }
 
+.cover .date-cn {
+  font-family: "Zihun Main KV", "Microsoft YaHei", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.cover .date-cn span {
+  font-family: "DIN Main KV", "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
 @keyframes kvTitleArrival {
   0% {
     opacity: 0;
