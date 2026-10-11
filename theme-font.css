@@ -77,7 +77,15 @@
 
 .market h2 {
   white-space: nowrap;
-  letter-spacing: 1px;
+  letter-spacing: 0;
+}
+
+.market h2 > .title-join {
+  display: inline;
+  margin: 0 0 0 -5px;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
 }
 
 @keyframes kvTitleArrival {
