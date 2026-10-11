@@ -80,11 +80,41 @@
 }
 
 .cover .cover-event {
-  font-size: 18px;
+  margin: 0 auto;
+  max-width: 100%;
+  color: #f5fbff;
+  font-family: "Zihun Main KV", "Microsoft YaHei", sans-serif;
+  font-size: clamp(17px, 4.5vw, 21px);
+  line-height: 1.55;
+  letter-spacing: .5px;
+  text-align: center;
 }
 
-.cover .cover-event span {
-  font-size: 16px;
+.cover .cover-brand-mask {
+  position: relative;
+  width: min(82%, 390px);
+  aspect-ratio: 1800 / 238;
+  height: auto;
+  margin: 26px auto 14px;
+  overflow: hidden;
+}
+
+.cover .cover-brand-source {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.cover .cover-main-title {
+  margin: 8px 0 10px;
+  font-size: clamp(27px, 6.8vw, 34px);
+  line-height: 1.38;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
 .market h2 {
@@ -376,5 +406,19 @@
   .kv-title-lockup {
     margin-top: 18px;
     margin-bottom: 7px;
+  }
+
+  .cover .cover-brand-mask {
+    margin: 18px auto 10px;
+  }
+
+  .cover .cover-main-title {
+    margin: 6px 0 8px;
+    font-size: clamp(25px, 6.6vw, 31px);
+    line-height: 1.34;
+  }
+
+  .cover .cover-event {
+    font-size: clamp(16px, 4.3vw, 19px);
   }
 }
