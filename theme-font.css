@@ -51,7 +51,7 @@
   width: min(92%, 390px);
 }
 
-.letter .landscape {
+.page > .landscape {
   bottom: 42px;
 }
 
