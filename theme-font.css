@@ -48,7 +48,7 @@
 }
 
 .cover .kv-title-lockup {
-  width: min(92%, 390px);
+  width: min(82%, 390px);
 }
 
 .page > .landscape {
@@ -84,11 +84,11 @@
 }
 
 .cover .cover-event {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .cover .cover-event span {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .market h2 {
