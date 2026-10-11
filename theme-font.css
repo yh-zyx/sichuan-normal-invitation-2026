@@ -64,15 +64,23 @@
 
 .cover .date-cn {
   font-family: "Zihun Main KV", "Microsoft YaHei", sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
   letter-spacing: 1px;
 }
 
 .cover .date-cn span {
   font-family: "DIN Main KV", "Microsoft YaHei", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 1px;
+}
+
+.cover .cover-event {
+  font-size: 16px;
+}
+
+.cover .cover-event span {
+  font-size: 14px;
 }
 
 .market h2 {
