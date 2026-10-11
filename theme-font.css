@@ -93,7 +93,7 @@
 .cover .cover-brand-mask {
   position: relative;
   width: min(82%, 390px);
-  aspect-ratio: 1800 / 238;
+  aspect-ratio: 1800 / 296;
   height: auto;
   margin: 26px auto 14px;
   overflow: hidden;
