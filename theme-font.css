@@ -104,6 +104,11 @@
   color: inherit;
 }
 
+.letter .details strong,
+.letter .details p {
+  color: #f5fbff;
+}
+
 .spark-field i {
   animation-play-state: paused;
 }
