@@ -77,12 +77,12 @@
 
 .market h2 {
   white-space: nowrap;
-  letter-spacing: 0;
+  letter-spacing: .3px;
 }
 
 .market h2 > .title-join {
   display: inline;
-  margin: 0 0 0 -5px;
+  margin: 0;
   font: inherit;
   letter-spacing: inherit;
   color: inherit;
