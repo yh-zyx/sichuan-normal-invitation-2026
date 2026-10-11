@@ -52,6 +52,11 @@
     kvTitleGlow 3.6s ease-in-out 1.15s infinite;
 }
 
+.closing .kv-title-lockup {
+  width: min(100%, 320px);
+  margin: 12px 0 10px;
+}
+
 @keyframes kvTitleArrival {
   0% {
     opacity: 0;
@@ -175,6 +180,11 @@
 
   .closing-message {
     margin-bottom: 12px;
+  }
+
+  .closing .kv-title-lockup {
+    width: min(100%, 290px);
+    margin: 7px 0 6px;
   }
 
   .locations > a {
