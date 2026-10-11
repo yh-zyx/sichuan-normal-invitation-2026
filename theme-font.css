@@ -71,7 +71,7 @@
   align-items: stretch;
   width: max-content;
   max-width: 100%;
-  margin: 18px auto 0;
+  margin: 28px auto 0;
   overflow: hidden;
   border: 1px solid rgba(229, 255, 255, .95);
 }
@@ -84,22 +84,22 @@
 }
 
 .cover .cover-date-value {
-  padding: 2px 12px 3px;
+  padding: 2px 9px;
   background: #efffff;
   color: #11a9c6;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.2;
-  letter-spacing: 1px;
+  letter-spacing: .8px;
 }
 
 .cover .cover-date-city {
-  padding: 2px 11px 3px;
+  padding: 2px 7px;
   border-left: 1px solid rgba(229, 255, 255, .9);
   background: rgba(2, 128, 193, .42);
   color: #f7ffff;
   font-family: "Zihun Main KV", "Microsoft YaHei", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.2;
 }
 
