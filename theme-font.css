@@ -75,6 +75,11 @@
   letter-spacing: 1px;
 }
 
+.market h2 {
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+
 @keyframes kvTitleArrival {
   0% {
     opacity: 0;
