@@ -76,6 +76,15 @@
   text-align: center;
 }
 
+.cover .cover-location {
+  margin-top: 30px;
+  font-size: 11px;
+}
+
+.cover #countdown {
+  font-size: 12px;
+}
+
 .cover .cover-event {
   margin: 0 auto;
   max-width: 100%;
