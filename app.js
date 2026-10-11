@@ -8,7 +8,8 @@ pages.forEach((page,pageIndex)=>{
   const revealTargets=[...page.querySelectorAll('.content > :not(.schedule),.schedule article,.details > div,.locations > a,.registration')];
   revealTargets.forEach((el,index)=>{el.classList.add('reveal');el.style.setProperty('--reveal-order',String(index));});
   const field=document.createElement('div');field.className='spark-field';field.setAttribute('aria-hidden','true');
-  for(let i=0;i<18;i+=1){const spark=document.createElement('i');spark.style.setProperty('--x',`${(i*37+pageIndex*13)%100}%`);spark.style.setProperty('--y',`${(i*53+pageIndex*17)%100}%`);spark.style.setProperty('--d',`${4+(i%7)}s`);spark.style.setProperty('--delay',`${-(i%9)}s`);field.append(spark)}
+  const sparkCount=matchMedia('(max-width: 600px)').matches?8:18;
+  for(let i=0;i<sparkCount;i+=1){const spark=document.createElement('i');spark.style.setProperty('--x',`${(i*37+pageIndex*13)%100}%`);spark.style.setProperty('--y',`${(i*53+pageIndex*17)%100}%`);spark.style.setProperty('--d',`${4+(i%7)}s`);spark.style.setProperty('--delay',`${-(i%9)}s`);field.append(spark)}
   page.append(field);
 });
 function update(){const focus=scroller.scrollTop+scroller.clientHeight*.35;current=pages.reduce((n,p,i)=>p.offsetTop<=focus?i:n,0);pages.forEach((page,i)=>page.classList.toggle('is-active',i===current));[...dots.children].forEach((b,i)=>{b.classList.toggle('active',i===current);b.setAttribute('aria-current',i===current?'step':'false')});document.querySelector('#page-count').textContent=`0${current+1} / 07`;prev.disabled=current===0;next.disabled=current===6;document.documentElement.style.setProperty('--scroll-progress',String(scroller.scrollTop/Math.max(1,scroller.scrollHeight-scroller.clientHeight)));}
@@ -35,10 +36,9 @@ async function startMusic(){if(musicPlaying&&!audio.paused)return true;musicPlay
 function pauseMusic(){if(config.musicUrl)audio.pause();else stopAmbient();musicPlaying=false;music.textContent='♪';music.classList.remove('playing');music.setAttribute('aria-label','播放背景音乐')}
 music.onclick=()=>musicPlaying?pauseMusic():startMusic();
 audio.addEventListener('error',()=>{pauseMusic();console.warn('背景音乐素材无法加载')});
-startMusic();
 function startThroughWeixinBridge(){const play=()=>startMusic();if(window.WeixinJSBridge&&window.WeixinJSBridge.invoke)window.WeixinJSBridge.invoke('getNetworkType',{},play);else play()}
-if(window.WeixinJSBridge)startThroughWeixinBridge();else document.addEventListener('WeixinJSBridgeReady',startThroughWeixinBridge,{once:true});
-window.addEventListener('pageshow',startMusic,{once:true});
+if(window.WeixinJSBridge)setTimeout(startThroughWeixinBridge,350);else document.addEventListener('WeixinJSBridgeReady',()=>setTimeout(startThroughWeixinBridge,350),{once:true});
+setTimeout(startMusic,650);
 ['pointerdown','touchstart','keydown'].forEach(type=>document.addEventListener(type,startMusic,{once:true,passive:true}));
 if(config.registrationQr){const img=new Image();img.alt='在线报名二维码';img.onload=()=>{document.querySelector('#qr').replaceChildren(img);document.querySelector('#registration-copy').textContent='长按识别二维码，在线报名'};img.src=config.registrationQr;}
 if(config.registrationUrl){const a=document.querySelector('#registration-link');a.href=config.registrationUrl;a.hidden=false;document.querySelector('#registration-copy').textContent='点击下方链接，在线报名'}
