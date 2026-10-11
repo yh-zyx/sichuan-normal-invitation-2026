@@ -18,7 +18,7 @@ function countdown(now=new Date()){const date=new Intl.DateTimeFormat('en-CA',{t
 function tick(){document.querySelector('#countdown').textContent=countdown()}tick();setInterval(tick,60000);update();
 const destinations={chenglong:'四川师范大学成龙校区 龙湖剧场',shizishan:'四川师范大学狮子山校区 生态广场'};
 document.querySelectorAll('[data-map]').forEach(a=>{a.href='https://uri.amap.com/search?keyword='+encodeURIComponent(destinations[a.dataset.map])+'&city='+encodeURIComponent('成都')+'&view=map';a.setAttribute('aria-label',a.textContent.trim()+'，打开高德地图')});
-const audio=document.querySelector('#audio'),music=document.querySelector('#music');
+const audio=document.querySelector('#audio'),music=document.querySelector('#music'),entry=document.querySelector('#entry');
 let audioContext=null,ambientMaster=null,ambientNodes=[],orchestraTimer=null,musicPlaying=false,phraseIndex=0;
 const harmony=[
   {bass:73.42,chord:[146.83,220,293.66,369.99],melody:[587.33,739.99,880,739.99,659.25,587.33]},
@@ -35,5 +35,9 @@ async function startMusic(){if(musicPlaying)return;musicPlaying=true;try{if(conf
 function pauseMusic(){if(config.musicUrl)audio.pause();else stopAmbient();musicPlaying=false;music.textContent='♪';music.classList.remove('playing');music.setAttribute('aria-label','播放背景音乐')}
 music.onclick=()=>musicPlaying?pauseMusic():startMusic();
 audio.addEventListener('error',()=>{pauseMusic();console.warn('背景音乐素材无法加载')});
+async function enterInvitation(){await startMusic();entry.classList.add('is-open');window.setTimeout(()=>entry.remove(),750)}
+entry.addEventListener('click',enterInvitation,{once:true});
+startMusic();
+document.addEventListener('WeixinJSBridgeReady',startMusic,{once:true});
 if(config.registrationQr){const img=new Image();img.alt='在线报名二维码';img.onload=()=>{document.querySelector('#qr').replaceChildren(img);document.querySelector('#registration-copy').textContent='长按识别二维码，在线报名'};img.src=config.registrationQr;}
 if(config.registrationUrl){const a=document.querySelector('#registration-link');a.href=config.registrationUrl;a.hidden=false;document.querySelector('#registration-copy').textContent='点击下方链接，在线报名'}
