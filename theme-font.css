@@ -47,6 +47,10 @@
   transform-origin: 50% 55%;
 }
 
+.cover .kv-title-lockup {
+  width: min(92%, 390px);
+}
+
 .page.is-active .kv-title-lockup {
   animation: kvTitleArrival 1.15s cubic-bezier(.2,.82,.2,1) both,
     kvTitleGlow 3.6s ease-in-out 1.15s infinite;
