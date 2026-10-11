@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Zihun Main KV";
-  src: url("assets/fonts/zihun-5-main-kv.ttf") format("truetype");
+  src: url("assets/fonts/zihun-5-main-kv-subset.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: "DIN Main KV";
-  src: url("assets/fonts/din-light-main-kv.ttf") format("truetype");
+  src: url("assets/fonts/din-light-main-kv-subset.woff2") format("woff2");
   font-display: swap;
   font-weight: 300;
 }
