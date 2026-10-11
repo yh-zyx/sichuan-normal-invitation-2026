@@ -179,7 +179,11 @@
   .letter-poem {
     margin-bottom: 10px;
     font-size: 15px;
-    line-height: 1.65;
+    line-height: 1.45;
+  }
+
+  .letter .salutation {
+    margin-bottom: 10px;
   }
 
   .letter .details > div {
@@ -295,7 +299,11 @@
   .letter-poem {
     margin-bottom: 8px;
     font-size: 14px;
-    line-height: 1.55;
+    line-height: 1.4;
+  }
+
+  .letter .salutation {
+    margin-bottom: 8px;
   }
 
   .letter .details > div {
