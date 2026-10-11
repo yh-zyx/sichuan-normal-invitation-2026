@@ -57,6 +57,11 @@
   margin: 12px 0 10px;
 }
 
+.closing .closing-landscape {
+  height: 170px;
+  opacity: .82;
+}
+
 .cover .date-cn {
   font-family: "Zihun Main KV", "Microsoft YaHei", sans-serif;
   font-size: 22px;
