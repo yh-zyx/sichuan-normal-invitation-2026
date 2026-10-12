@@ -1008,7 +1008,7 @@
 .road-edge { stroke: #839fa6; stroke-width: 72; }
 .road-surface { stroke: #c0cfd0; stroke-width: 65; }
 .road-center { stroke: #f2e6b4; stroke-width: 3; stroke-dasharray: 18 12; }
-.road-names { fill: #bd2634; stroke: #dce6e5; stroke-width: 8; paint-order: stroke; font: 700 54px 'Microsoft YaHei', sans-serif; letter-spacing: 2px; }
+.road-names { fill: #e7a842; stroke: #25485f; stroke-width: 8; paint-order: stroke; font: 700 54px 'Microsoft YaHei', sans-serif; letter-spacing: 2px; }
 .road-name-vertical { writing-mode: vertical-rl; text-orientation: upright; }
 @media (max-width: 340px) {
   .event-brand { width: 120px; }
