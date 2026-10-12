@@ -20,8 +20,6 @@ function countdown(now=new Date()){const date=new Intl.DateTimeFormat('en-CA',{t
 function tick(){document.querySelector('#countdown').textContent=countdown()}tick();setInterval(tick,60000);update();
 const destinations={chenglong:'四川师范大学成龙校区 龙湖剧场'};
 document.querySelectorAll('[data-map]').forEach(a=>{a.href='https://uri.amap.com/search?keyword='+encodeURIComponent(destinations[a.dataset.map])+'&city='+encodeURIComponent('成都')+'&view=map';a.setAttribute('aria-label',a.textContent.trim()+'，打开高德地图')});
-const venueMap=document.querySelector('.venue-map iframe[data-src]');
-if(venueMap){const loadVenueMap=()=>{if(!venueMap.src)venueMap.src=venueMap.dataset.src};if('IntersectionObserver'in window){const mapObserver=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){loadVenueMap();mapObserver.disconnect()}},{root:scroller,rootMargin:'25% 0px'});mapObserver.observe(venueMap)}else loadVenueMap()}
 const audio=document.querySelector('#audio'),music=document.querySelector('#music'),musicHint=document.querySelector('#music-hint');
 let audioContext=null,ambientMaster=null,ambientNodes=[],orchestraTimer=null,musicPlaying=false,phraseIndex=0;
 const harmony=[
