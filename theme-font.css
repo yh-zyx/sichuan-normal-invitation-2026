@@ -856,3 +856,93 @@
 @media (max-height: 720px) {
   .campus-map-button { width: min(100%, 290px); }
 }
+
+/* Keep the three screens within the viewport, with space allocated to the map and agenda. */
+.cover .cover-title-primary,
+.cover .cover-title-secondary { font-size: clamp(16px, 5.2vw, 24px); }
+.agenda-full, .venue-page { height: 100%; }
+.agenda-full .content, .venue-page .content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: calc(68px + env(safe-area-inset-top));
+  padding-bottom: calc(74px + env(safe-area-inset-bottom));
+}
+.agenda-full h2, .venue-page h2 { margin: 0 0 4px; font-size: 29px; line-height: 1.25; }
+.agenda-full .agenda-english, .venue-page .venue-english {
+  margin: 0 0 13px;
+  font-size: 9px;
+  line-height: 1.4;
+  letter-spacing: 2px;
+}
+.agenda-full .time-range { margin: 0 0 14px; font-size: 18px; }
+.agenda-full .schedule {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.agenda-full .schedule article { margin: 0; padding: 4px 0 7px; gap: 12px; }
+.agenda-full .schedule p { margin: 0; font-size: 11.5px; line-height: 1.5; }
+.agenda-full .schedule small { margin-top: 5px; font-size: 10px; line-height: 1.4; }
+.venue-page .venue-heading { gap: 3px; margin: 0 0 12px; }
+.venue-page .venue-heading strong { font-size: 13px; }
+.venue-page .venue-heading > span { font-size: 9px; }
+.venue-page .campus-map-button {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 8px 22px #001a7430;
+  background: #fff;
+}
+.campus-map-button .campus-plan { flex: 1; min-height: 0; width: 100%; height: 100%; }
+.gate-labels { font-size: 42px; font-weight: 500; fill: #25485f; stroke-width: 12; }
+.gate-dots { fill: #54788d; stroke-width: 5; }
+.venue-markers circle { fill: #e7a842; stroke: #fff; stroke-width: 9; }
+.venue-markers text {
+  fill: #172d47;
+  font: bold 48px Arial, sans-serif;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+.map-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  flex-shrink: 0;
+  padding: 10px 7px;
+  background: #f2f6f8;
+  color: #23425b;
+  font: 11px/1.2 'Microsoft YaHei', sans-serif;
+}
+.map-legend b { display: inline-block; padding: 2px 5px; border-radius: 50%; background: #e7a842; color: #172d47; font: bold 10px Arial; }
+.map-legend small { font-size: 9px; color: #6d8291; }
+.venue-page .transport-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 12px; }
+.venue-page .transport-list > div { padding: 0; border: 0; }
+.venue-page .transport-list span { font-size: 11px; }
+.venue-page .transport-list p { margin: 4px 0 0; font-size: 10px; line-height: 1.55; }
+.venue-page .venue-nav { flex-shrink: 0; margin: 10px 0 0; padding: 8px 0; font-size: 12px; }
+.venue-page .back { display: none; }
+#campus-map-dialog .map-legend { margin-top: 8px; }
+@media (max-height: 680px) {
+  .agenda-full .content, .venue-page .content { padding-top: calc(60px + env(safe-area-inset-top)); padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
+  .agenda-full h2, .venue-page h2 { font-size: 25px; }
+  .agenda-full .agenda-english, .venue-page .venue-english { margin-bottom: 8px; }
+  .agenda-full .time-range { margin-bottom: 8px; font-size: 16px; }
+  .agenda-full .schedule article { padding: 2px 0 4px; gap: 8px; grid-template-columns: 76px minmax(0, 1fr); }
+  .agenda-full .schedule p { font-size: 10.5px; line-height: 1.35; }
+  .agenda-full .schedule small { margin-top: 3px; font-size: 9.5px; }
+  .venue-page .venue-heading { margin-bottom: 8px; }
+  .venue-page .transport-list { margin-top: 8px; }
+}
+@media (max-height: 680px) {
+  .agenda-full .content { padding-bottom: calc(78px + env(safe-area-inset-bottom)); }
+}
