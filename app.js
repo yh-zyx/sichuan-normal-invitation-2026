@@ -1,4 +1,8 @@
 const config=window.INVITATION_CONFIG||{};
+const campusMapDialog=document.querySelector('#campus-map-dialog');
+document.querySelector('#campus-map-detail').append(document.querySelector('.campus-plan').cloneNode(true));
+document.querySelector('#open-campus-map').onclick=()=>campusMapDialog.showModal();
+document.querySelector('#close-campus-map').onclick=()=>campusMapDialog.close();
 const scroller=document.querySelector('#pages'), pages=[...document.querySelectorAll('.page')];
 const dots=document.querySelector('#dots'), prev=document.querySelector('#prev'),next=document.querySelector('#next');
 let current=0;

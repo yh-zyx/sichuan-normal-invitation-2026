@@ -800,3 +800,59 @@
     font-size: clamp(16px, 4.3vw, 19px);
   }
 }
+
+/* Campus plan annotations stay aligned with the supplied campus drawing. */
+.campus-map-button {
+  display: block;
+  width: min(100%, 350px);
+  margin: 0 auto;
+  padding: 0;
+  border: 1px solid #b9eaff;
+  background: #fff;
+  cursor: zoom-in;
+}
+.campus-plan { display: block; width: 100%; height: auto; }
+.gate-lines { fill: none; stroke: #064ca7; stroke-width: 7; }
+.gate-dots { fill: #064ca7; stroke: #fff; stroke-width: 5; }
+.gate-labels, .venue-labels {
+  font-family: 'Microsoft YaHei', sans-serif;
+  font-weight: 700;
+  font-size: 46px;
+  letter-spacing: 0;
+  fill: #064ca7;
+  stroke: #fff;
+  stroke-width: 9;
+  paint-order: stroke;
+}
+.venue-lines { fill: none; stroke: #d72e36; stroke-width: 9; }
+.venue-labels { fill: #c51c2a; font-size: 52px; }
+.map-expand-hint {
+  display: block;
+  padding: 5px;
+  color: #174b7a;
+  background: #eef8ff;
+  font: 10px/1.4 'Microsoft YaHei', sans-serif;
+}
+#campus-map-dialog {
+  width: min(96vw, 900px);
+  max-width: 96vw;
+  max-height: 92dvh;
+  margin: auto;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  color: #153960;
+  background: white;
+  overflow: auto;
+}
+#campus-map-dialog::backdrop { background: #001331cc; }
+#campus-map-dialog header { display: flex; align-items: center; justify-content: space-between; }
+#close-campus-map { padding: 10px; color: #153960; border: 0; background: #edf5fc; border-radius: 4px; }
+#campus-map-dialog p { margin: 8px 0 0; font-size: 12px; text-align: center; }
+#campus-map-detail { overflow: auto; }
+#campus-map-detail .campus-plan { min-width: 650px; }
+.venue-page .transport-list > div { padding: 6px 0; }
+.venue-page .venue-heading { margin-bottom: 10px; }
+@media (max-height: 720px) {
+  .campus-map-button { width: min(100%, 290px); }
+}
