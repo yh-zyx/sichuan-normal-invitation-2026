@@ -875,7 +875,9 @@
   line-height: 1.4;
   letter-spacing: 2px;
 }
-.agenda-full .time-range { margin: 0 0 14px; font-size: 18px; }
+.agenda-full .content { padding-bottom: calc(clamp(110px, 14vh, 160px) + env(safe-area-inset-bottom)); }
+.agenda-full .agenda-english { margin-bottom: 8px; }
+.agenda-full .time-range { margin: 0 0 10px; font-size: 18px; }
 .agenda-full .schedule {
   flex: 1;
   min-height: 0;
@@ -944,5 +946,5 @@
   .venue-page .transport-list { margin-top: 8px; }
 }
 @media (max-height: 680px) {
-  .agenda-full .content { padding-bottom: calc(78px + env(safe-area-inset-bottom)); }
+  .agenda-full .content { padding-bottom: calc(102px + env(safe-area-inset-bottom)); }
 }
