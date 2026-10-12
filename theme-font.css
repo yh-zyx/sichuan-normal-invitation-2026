@@ -151,6 +151,26 @@
   font-size: clamp(11px, 3.5vw, 14px);
 }
 
+@media (max-width: 340px) {
+  .chrome {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .wordmark {
+    font-size: 9px;
+    letter-spacing: .4px;
+  }
+
+  .chrome-right {
+    gap: 6px;
+  }
+
+  .site-logo {
+    width: 84px;
+  }
+}
+
 .agenda-full .content {
   padding-top: 76px;
 }
