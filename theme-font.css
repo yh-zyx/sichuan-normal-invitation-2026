@@ -124,6 +124,33 @@
   text-align: center;
 }
 
+.chrome-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-logo {
+  display: block;
+  width: clamp(94px, 28vw, 118px);
+  height: auto;
+  filter: drop-shadow(0 2px 7px rgba(0, 24, 92, .3));
+}
+
+.cover .cover-title-line {
+  display: block;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.cover .cover-title-primary {
+  font-size: clamp(13px, 4vw, 17px);
+}
+
+.cover .cover-title-secondary {
+  font-size: clamp(11px, 3.5vw, 14px);
+}
+
 .agenda-full .content {
   padding-top: 76px;
 }
