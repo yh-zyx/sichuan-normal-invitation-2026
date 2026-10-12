@@ -164,12 +164,18 @@
   margin: 0 auto;
   max-width: 390px;
   font-family: Arial, sans-serif;
-  font-size: clamp(9px, 2.5vw, 11px);
+  font-size: clamp(7px, 2.3vw, 10px);
   line-height: 1.5;
   letter-spacing: 0;
   text-align: center;
   color: #efffff;
 }
+
+.cover .cover-title-english {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+.cover-title-english > span { display: block; white-space: nowrap; }
 
 #swipe-cue {
   position: absolute;
