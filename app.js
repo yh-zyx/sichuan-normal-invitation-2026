@@ -2,7 +2,8 @@ const config=window.INVITATION_CONFIG||{};
 const scroller=document.querySelector('#pages'), pages=[...document.querySelectorAll('.page')];
 const dots=document.querySelector('#dots'), prev=document.querySelector('#prev'),next=document.querySelector('#next');
 let current=0;
-function go(index){index=Math.max(0,Math.min(6,index));scroller.scrollTo({top:pages[index].offsetTop,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
+const lastPage=pages.length-1;
+function go(index){index=Math.max(0,Math.min(lastPage,index));scroller.scrollTo({top:pages[index].offsetTop,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
 pages.forEach((page,index)=>{const b=document.createElement('button');b.setAttribute('aria-label',`第${index+1}屏：${page.querySelector('h1,h2').textContent}`);b.addEventListener('click',()=>go(index));dots.append(b)});
 pages.forEach((page,pageIndex)=>{
   const revealTargets=[...page.querySelectorAll('.content > :not(.schedule),.schedule article,.details > div,.locations > a,.registration')];
@@ -12,13 +13,15 @@ pages.forEach((page,pageIndex)=>{
   for(let i=0;i<sparkCount;i+=1){const spark=document.createElement('i');spark.style.setProperty('--x',`${(i*37+pageIndex*13)%100}%`);spark.style.setProperty('--y',`${(i*53+pageIndex*17)%100}%`);spark.style.setProperty('--d',`${4+(i%7)}s`);spark.style.setProperty('--delay',`${-(i%9)}s`);field.append(spark)}
   page.append(field);
 });
-function update(){const focus=scroller.scrollTop+scroller.clientHeight*.35;current=pages.reduce((n,p,i)=>p.offsetTop<=focus?i:n,0);pages.forEach((page,i)=>page.classList.toggle('is-active',i===current));[...dots.children].forEach((b,i)=>{b.classList.toggle('active',i===current);b.setAttribute('aria-current',i===current?'step':'false')});document.querySelector('#page-count').textContent=`0${current+1} / 07`;prev.disabled=current===0;next.disabled=current===6;document.documentElement.style.setProperty('--scroll-progress',String(scroller.scrollTop/Math.max(1,scroller.scrollHeight-scroller.clientHeight)));}
+function update(){const focus=scroller.scrollTop+scroller.clientHeight*.35;current=pages.reduce((n,p,i)=>p.offsetTop<=focus?i:n,0);pages.forEach((page,i)=>page.classList.toggle('is-active',i===current));[...dots.children].forEach((b,i)=>{b.classList.toggle('active',i===current);b.setAttribute('aria-current',i===current?'step':'false')});document.querySelector('#page-count').textContent=`${String(current+1).padStart(2,'0')} / ${String(pages.length).padStart(2,'0')}`;prev.disabled=current===0;next.disabled=current===lastPage;document.documentElement.style.setProperty('--scroll-progress',String(scroller.scrollTop/Math.max(1,scroller.scrollHeight-scroller.clientHeight)));}
 scroller.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);prev.onclick=()=>go(current-1);next.onclick=()=>go(current+1);document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{go(Number(b.dataset.go));startMusic()});
-scroller.addEventListener('keydown',e=>{if(e.target.closest('a,button'))return;if(['ArrowDown','PageDown','ArrowUp','PageUp','Home','End'].includes(e.key)){e.preventDefault();go(e.key==='Home'?0:e.key==='End'?6:current+(['ArrowDown','PageDown'].includes(e.key)?1:-1))}});
+scroller.addEventListener('keydown',e=>{if(e.target.closest('a,button'))return;if(['ArrowDown','PageDown','ArrowUp','PageUp','Home','End'].includes(e.key)){e.preventDefault();go(e.key==='Home'?0:e.key==='End'?lastPage:current+(['ArrowDown','PageDown'].includes(e.key)?1:-1))}});
 function countdown(now=new Date()){const date=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(now);const parts=new Intl.DateTimeFormat('en',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(now);const v=Object.fromEntries(parts.map(x=>[x.type,x.value]));const today=Date.UTC(+v.year,+v.month-1,+v.day),target=Date.UTC(2026,9,22);const days=Math.round((target-today)/86400000);return days>0?`距开幕还有 ${days} 天`:days===0?'今天开幕，诚邀莅临':'2026国际教育交流月 · 开幕式已结束';}
 function tick(){document.querySelector('#countdown').textContent=countdown()}tick();setInterval(tick,60000);update();
-const destinations={chenglong:'四川师范大学成龙校区 龙湖剧场',shizishan:'四川师范大学狮子山校区 生态广场'};
+const destinations={chenglong:'四川师范大学成龙校区 龙湖剧场'};
 document.querySelectorAll('[data-map]').forEach(a=>{a.href='https://uri.amap.com/search?keyword='+encodeURIComponent(destinations[a.dataset.map])+'&city='+encodeURIComponent('成都')+'&view=map';a.setAttribute('aria-label',a.textContent.trim()+'，打开高德地图')});
+const venueMap=document.querySelector('.venue-map iframe[data-src]');
+if(venueMap){const loadVenueMap=()=>{if(!venueMap.src)venueMap.src=venueMap.dataset.src};if('IntersectionObserver'in window){const mapObserver=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){loadVenueMap();mapObserver.disconnect()}},{root:scroller,rootMargin:'25% 0px'});mapObserver.observe(venueMap)}else loadVenueMap()}
 const audio=document.querySelector('#audio'),music=document.querySelector('#music'),musicHint=document.querySelector('#music-hint');
 let audioContext=null,ambientMaster=null,ambientNodes=[],orchestraTimer=null,musicPlaying=false,phraseIndex=0;
 const harmony=[
