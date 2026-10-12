@@ -948,3 +948,30 @@
 @media (max-height: 680px) {
   .agenda-full .content { padding-bottom: calc(102px + env(safe-area-inset-bottom)); }
 }
+
+/* Blend the original plan into the invitation palette without changing its geography. */
+.venue-page .campus-map-button { background: #acd6e6; border: 1px solid #b8eaff60; }
+.campus-map-button .campus-plan { isolation: isolate; background: #acd6e6; }
+.campus-map-button .campus-plan image { mix-blend-mode: multiply; }
+.campus-map-button .gate-labels { stroke: #acd6e6; fill: #153d5a; }
+.campus-map-button .map-legend { background: #174e82; color: #ecfbff; }
+.campus-map-button .map-legend small { color: #b4dbe9; }
+.venue-page .venue-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 9px 0 0;
+  padding: 10px 14px;
+  border: 1px solid #92edff80;
+  border-radius: 6px;
+  background: #087abb;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.2;
+}
+#campus-map-dialog { background: #174e82; color: #ecfbff; }
+#campus-map-detail .campus-plan { isolation: isolate; background: #acd6e6; }
+#campus-map-detail .campus-plan image { mix-blend-mode: multiply; }
+#campus-map-detail .gate-labels { stroke: #acd6e6; fill: #153d5a; }
+#campus-map-dialog .map-legend { background: #174e82; color: #ecfbff; }
+#campus-map-dialog .map-legend small { display: none; }
