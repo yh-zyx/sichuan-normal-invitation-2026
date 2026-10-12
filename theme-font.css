@@ -144,11 +144,11 @@
 }
 
 .cover .cover-title-primary {
-  font-size: clamp(13px, 4vw, 17px);
+  font-size: clamp(14px, 4.5vw, 20px);
 }
 
 .cover .cover-title-secondary {
-  font-size: clamp(11px, 3.5vw, 14px);
+  font-size: clamp(12px, 4vw, 18px);
 }
 
 @media (max-width: 340px) {
