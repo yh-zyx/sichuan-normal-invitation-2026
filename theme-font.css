@@ -127,12 +127,17 @@
 .chrome-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+}
+
+.chrome-right #music {
+  width: 30px;
+  height: 30px;
 }
 
 .site-logo {
   display: block;
-  width: clamp(94px, 28vw, 118px);
+  width: clamp(90px, 27vw, 114px);
   height: auto;
   filter: drop-shadow(0 2px 7px rgba(0, 24, 92, .3));
 }
@@ -163,11 +168,11 @@
   }
 
   .chrome-right {
-    gap: 6px;
+    gap: 5px;
   }
 
   .site-logo {
-    width: 84px;
+    width: 80px;
   }
 }
 
