@@ -18,8 +18,9 @@ scroller.addEventListener('scroll',update,{passive:true});window.addEventListene
 scroller.addEventListener('keydown',e=>{if(e.target.closest('a,button'))return;if(['ArrowDown','PageDown','ArrowUp','PageUp','Home','End'].includes(e.key)){e.preventDefault();go(e.key==='Home'?0:e.key==='End'?lastPage:current+(['ArrowDown','PageDown'].includes(e.key)?1:-1))}});
 function countdown(now=new Date()){const date=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(now);const parts=new Intl.DateTimeFormat('en',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(now);const v=Object.fromEntries(parts.map(x=>[x.type,x.value]));const today=Date.UTC(+v.year,+v.month-1,+v.day),target=Date.UTC(2026,9,22);const days=Math.round((target-today)/86400000);return days>0?`距开幕还有 ${days} 天`:days===0?'今天开幕，诚邀莅临':'2026国际教育交流月 · 开幕式已结束';}
 function tick(){document.querySelector('#countdown').textContent=countdown()}tick();setInterval(tick,60000);update();
-const destinations={chenglong:'四川师范大学成龙校区 龙湖剧场'};
-document.querySelectorAll('[data-map]').forEach(a=>{a.href='https://uri.amap.com/search?keyword='+encodeURIComponent(destinations[a.dataset.map])+'&city='+encodeURIComponent('成都')+'&view=map';a.setAttribute('aria-label',a.textContent.trim()+'，打开高德地图')});
+// The bundled map uses WGS84; tell Amap to convert it rather than treating it as GCJ-02.
+const destinations={chenglong:{name:'四川师范大学成龙校区 龙湖剧场',position:'104.19806,30.56434'}};
+document.querySelectorAll('[data-map]').forEach(a=>{const destination=destinations[a.dataset.map];const params=new URLSearchParams({position:destination.position,name:destination.name,coordinate:'wgs84',src:'sicnu-invitation',callnative:'0'});a.href='https://uri.amap.com/marker?'+params.toString();a.setAttribute('aria-label',destination.name+'，打开高德地图')});
 const audio=document.querySelector('#audio'),music=document.querySelector('#music'),musicHint=document.querySelector('#music-hint');
 let audioContext=null,ambientMaster=null,ambientNodes=[],orchestraTimer=null,musicPlaying=false,phraseIndex=0;
 const harmony=[
