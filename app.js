@@ -46,6 +46,10 @@ audio.addEventListener('error',()=>{pauseMusic();console.warn('背景音乐素�
 startMusic();
 function startThroughWeixinBridge(){const play=()=>startMusic();if(window.WeixinJSBridge&&window.WeixinJSBridge.invoke)window.WeixinJSBridge.invoke('getNetworkType',{},play);else play()}
 if(window.WeixinJSBridge)startThroughWeixinBridge();else document.addEventListener('WeixinJSBridgeReady',startThroughWeixinBridge,{once:true});
+function retryAutoplay(){if(!document.hidden&&audio.paused)startThroughWeixinBridge()}
+window.addEventListener('load',retryAutoplay,{once:true});
+window.addEventListener('pageshow',retryAutoplay);
+document.addEventListener('visibilitychange',retryAutoplay);
 ['pointerdown','touchstart','keydown'].forEach(type=>document.addEventListener(type,startMusic,{once:true,passive:true}));
 if(config.registrationQr){const img=new Image();img.alt='在线报名二维码';img.onload=()=>{document.querySelector('#qr').replaceChildren(img);document.querySelector('#registration-copy').textContent='长按识别二维码，在线报名'};img.src=config.registrationQr;}
 if(config.registrationUrl){const a=document.querySelector('#registration-link');a.href=config.registrationUrl;a.hidden=false;document.querySelector('#registration-copy').textContent='点击下方链接，在线报名'}

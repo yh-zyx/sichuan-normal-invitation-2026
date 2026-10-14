@@ -1025,13 +1025,17 @@
   padding-top: 2px;
   padding-bottom: 3px;
 }
-.agenda-full .schedule p { line-height: 1.28; }
+.agenda-full .schedule p {
+  padding-inline: 3px;
+  text-align: center;
+  line-height: 1.28;
+}
 .agenda-full .schedule p > span { display: block; }
 .agenda-full .schedule .speaker-cn {
   margin-top: 1px;
-  color: #d7e9ff;
+  color: #ffe0a3;
   font-size: 9px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.22;
 }
 .agenda-full .schedule .schedule-en {
