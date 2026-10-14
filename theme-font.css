@@ -1021,13 +1021,13 @@
 
 /* Fit the bilingual afternoon agenda on one mobile screen without hiding source wording. */
 .agenda-full .schedule article {
-  align-items: start;
+  align-items: center;
   padding-top: 2px;
   padding-bottom: 3px;
 }
 .agenda-full .schedule p {
-  padding-inline: 3px;
-  text-align: center;
+  padding-inline: 0;
+  text-align: left;
   line-height: 1.28;
 }
 .agenda-full .schedule p > span { display: block; }
