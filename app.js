@@ -1,8 +1,4 @@
-const config=window.INVITATION_CONFIG||{};
-const shareCard={title:'四川师范大学伯明翰学院2026年开学典礼暨四川师范大学2026年国际教育交流月开幕式',desc:'2026年10月22日，四川师范大学成龙校区龙湖剧场。',link:'https://invite.zmkj1.com/?share=20261014-invitation',img_url:'https://invite.zmkj1.com/assets/share-cover-20261011-v2.jpg',img_width:'300',img_height:'300'};
-if(location.hostname==='invite.zmkj1.com'&&location.href!==shareCard.link)history.replaceState(history.state,'',shareCard.link);
-function configureWeChatShare(){const bridge=window.WeixinJSBridge;if(!bridge?.on||!bridge?.invoke)return;bridge.on('menu:share:appmessage',()=>bridge.invoke('sendAppMessage',shareCard));bridge.on('menu:share:timeline',()=>bridge.invoke('shareTimeline',{...shareCard,title:shareCard.title}))}
-if(window.WeixinJSBridge)configureWeChatShare();else document.addEventListener('WeixinJSBridgeReady',configureWeChatShare,{once:true});
+const config=window.INVITATION_CONFIG||{musicUrl:'assets/global-celebration-48k.m4a',registrationQr:'',registrationUrl:''};
 const campusMapDialog=document.querySelector('#campus-map-dialog');
 document.querySelector('#campus-map-detail').append(document.querySelector('.campus-plan').cloneNode(true));
 document.querySelector('#campus-map-dialog').append(document.querySelector('.map-legend').cloneNode(true));
@@ -49,7 +45,7 @@ music.onclick=()=>musicPlaying?pauseMusic():startMusic();
 audio.addEventListener('error',()=>{pauseMusic();console.warn('背景音乐素材无法加载')});
 function startThroughWeixinBridge(){const play=()=>startMusic();if(window.WeixinJSBridge&&window.WeixinJSBridge.invoke)window.WeixinJSBridge.invoke('getNetworkType',{},play);else play()}
 let visualReady=document.readyState==='complete',autoplayTimer=null;
-function scheduleAutoplay(){if(!visualReady||document.hidden||!audio.paused||autoplayTimer)return;autoplayTimer=setTimeout(()=>{autoplayTimer=null;startThroughWeixinBridge()},350)}
+function scheduleAutoplay(){if(!visualReady||document.hidden||!audio.paused||autoplayTimer)return;autoplayTimer=setTimeout(()=>{autoplayTimer=null;startThroughWeixinBridge()},1500)}
 function markVisualReady(){visualReady=true;scheduleAutoplay()}
 if(visualReady)scheduleAutoplay();else window.addEventListener('load',markVisualReady,{once:true});
 document.addEventListener('WeixinJSBridgeReady',scheduleAutoplay,{once:true});
