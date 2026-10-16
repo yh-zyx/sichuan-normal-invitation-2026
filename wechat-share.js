@@ -1,6 +1,6 @@
 (() => {
   const diagnostic = location.hash === '#share-debug' || new URLSearchParams(location.search).has('wechat_debug');
-  const status = window.invitationShareStatus = { version: '20261016-2', state: 'loading', sdk: 'loading', signature: 'loading' };
+  const status = window.invitationShareStatus = { version: '20261016-4', state: 'loading', sdk: 'loading', signature: 'loading' };
   if (diagnostic) {
     const box = document.getElementById('wechat-diagnostic') || document.createElement('pre');
     box.style.cssText = 'position:fixed;bottom:12px;left:10px;right:10px;z-index:99999;background:#fff;color:#111;padding:12px;font:12px/1.5 monospace;white-space:pre-wrap;max-height:45vh;overflow:auto;border:2px solid #27a';
@@ -39,6 +39,19 @@
       wx.error(e => { status.state = 'config_failed'; status.error = e.errMsg; });
       wx.ready(() => {
         status.state = 'config_ready';
+        if (typeof wx.onMenuShareAppMessage === 'function') {
+          wx.onMenuShareAppMessage({ ...data, type: 'link', dataUrl: '',
+            success: () => { status.legacyFriends = 'callback_success'; },
+            fail: e => { status.legacyFriends = e.errMsg; }
+          });
+          status.legacyFriends = 'registered';
+        }
+        if (typeof wx.onMenuShareTimeline === 'function') {
+          wx.onMenuShareTimeline({ title: data.title, link: data.link, imgUrl: data.imgUrl,
+            fail: e => { status.legacyTimeline = e.errMsg; }
+          });
+          status.legacyTimeline = 'registered';
+        }
         wx.updateAppMessageShareData({ ...data,
           success: () => { status.friends = 'ready'; },
           fail: e => { status.friends = e.errMsg; }
@@ -50,6 +63,6 @@
       });
       wx.config({ debug: false, appId: config.appId, timestamp: config.timestamp,
         nonceStr: config.nonceStr, signature: config.signature,
-        jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData'] });
+        jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData', 'onMenuShareAppMessage', 'onMenuShareTimeline'] });
     }).catch(e => { status.state = 'failed'; status.error = e.message; });
 })();
