@@ -1,8 +1,8 @@
 (() => {
-  const diagnostic = location.hash === '#share-debug';
+  const diagnostic = location.hash === '#share-debug' || new URLSearchParams(location.search).has('wechat_debug');
   const status = window.invitationShareStatus = { version: '20261016-2', state: 'loading', sdk: 'loading', signature: 'loading' };
   if (diagnostic) {
-    const box = document.createElement('pre');
+    const box = document.getElementById('wechat-diagnostic') || document.createElement('pre');
     box.style.cssText = 'position:fixed;bottom:12px;left:10px;right:10px;z-index:99999;background:#fff;color:#111;padding:12px;font:12px/1.5 monospace;white-space:pre-wrap;max-height:45vh;overflow:auto;border:2px solid #27a';
     document.body.appendChild(box);
     const started = Date.now();
